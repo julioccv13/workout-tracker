@@ -45,7 +45,6 @@ export default function GymTracker() {
     return savedLog ? JSON.parse(savedLog) : {};
   });
 
-  // Save log to localStorage whenever it updates
   useEffect(() => {
     localStorage.setItem("gymTrackerLog", JSON.stringify(log));
   }, [log]);
@@ -67,7 +66,8 @@ export default function GymTracker() {
     <div className="app-container">
       {!selectedDay ? (
         <div>
-          <h1>🏋️‍♂️ Gym Tracker</h1>
+          <h1>Gym Tracker</h1>
+          <img src="icon.png" alt="Gym Tracker Icon" style={{ width: "150px", display: "block", margin: "0 auto" }} />
           {Object.keys(workouts).map((day) => (
             <button key={day} onClick={() => setSelectedDay(day)}>
               {day}
