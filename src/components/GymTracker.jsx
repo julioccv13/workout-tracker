@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const workouts = {
   "Push Day": [
@@ -40,14 +40,25 @@ const workouts = {
 
 export default function GymTracker() {
   const [selectedDay, setSelectedDay] = useState(null);
-  const [log, setLog] = useState({});
+  const [log, setLog] = useState(() => {
+    const savedLog = localStorage.getItem("gymTrackerLog");
+    return savedLog ? JSON.parse(savedLog) : {};
+  });
+
+  // Save log to localStorage whenever it updates
+  useEffect(() => {
+    localStorage.setItem("gymTrackerLog", JSON.stringify(log));
+  }, [log]);
 
   const handleLogChange = (exercise, index, field, value) => {
     setLog((prev) => ({
       ...prev,
-      [exercise]: {
-        ...prev[exercise],
-        [index]: { ...prev[exercise]?.[index], [field]: value },
+      [selectedDay]: {
+        ...prev[selectedDay],
+        [exercise]: {
+          ...prev[selectedDay]?.[exercise],
+          [index]: { ...prev[selectedDay]?.[exercise]?.[index], [field]: value },
+        },
       },
     }));
   };
@@ -75,12 +86,12 @@ export default function GymTracker() {
                 <div key={j}>
                   <input
                     placeholder={`Reps`}
-                    value={log[exercise.name]?.[j]?.reps || ""}
+                    value={log[selectedDay]?.[exercise.name]?.[j]?.reps || ""}
                     onChange={(e) => handleLogChange(exercise.name, j, "reps", e.target.value)}
                   />
                   <input
                     placeholder={`Weight`}
-                    value={log[exercise.name]?.[j]?.weight || ""}
+                    value={log[selectedDay]?.[exercise.name]?.[j]?.weight || ""}
                     onChange={(e) => handleLogChange(exercise.name, j, "weight", e.target.value)}
                   />
                 </div>
