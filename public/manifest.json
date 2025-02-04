@@ -1,0 +1,17 @@
+{
+    "name": "Gym Tracker",
+    "short_name": "GymTracker",
+    "description": "Track your gym workouts easily!",
+    "icons": [
+      {
+        "src": "icon.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#2b5876",
+    "theme_color": "#2b5876"
+  }
+  
