@@ -85,12 +85,12 @@ export default function GymTracker() {
               {Array.from({ length: exercise.sets }).map((_, j) => (
                 <div key={j}>
                   <input
-                    placeholder={`Reps`}
+                    placeholder={`Set ${j + 1} Reps`}
                     value={log[selectedDay]?.[exercise.name]?.[j]?.reps || ""}
                     onChange={(e) => handleLogChange(exercise.name, j, "reps", e.target.value)}
                   />
                   <input
-                    placeholder={`Weight`}
+                    placeholder={`Set ${j + 1} Weight`}
                     value={log[selectedDay]?.[exercise.name]?.[j]?.weight || ""}
                     onChange={(e) => handleLogChange(exercise.name, j, "weight", e.target.value)}
                   />
