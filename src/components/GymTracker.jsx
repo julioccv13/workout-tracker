@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 const workouts = {
   "Push Day": [
-    { name: "Flat Barbell Bench Press", sets: 2, reps: "5-8" },
+    { name: "Incline Barbell Bench Press", sets: 2, reps: "5-8" },
     { name: "Lateral Raise", sets: 3, reps: "10-15" },
     { name: "Flat Bench", sets: 2, reps: "5-10" },
     { name: "Tricep Dips", sets: 2, reps: "5-8" },
