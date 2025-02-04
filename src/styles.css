@@ -1,10 +1,67 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background: #f5f5f5;
+    background: linear-gradient(to bottom, #2b5876, #4e4376);
+    color: white;
+    margin: 0;
+    padding: 0;
   }
   
+  /* Main Container */
+  .app-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Buttons */
   button {
+    background: #ffcc00;
+    color: black;
+    border: none;
+    padding: 12px 18px;
+    margin: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
     cursor: pointer;
+    transition: 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    background: #e6b800;
+    transform: scale(1.05);
+  }
+  
+  /* Cards */
+  .card {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card p {
+    margin: 5px 0;
+  }
+  
+  /* Inputs */
+  input {
+    width: 45%;
+    padding: 8px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  input:focus {
+    outline: none;
+    border: 2px solid #ffcc00;
   }
   

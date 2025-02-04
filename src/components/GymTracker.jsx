@@ -53,36 +53,33 @@ export default function GymTracker() {
   };
 
   return (
-    <div className="p-4">
+    <div className="app-container">
       {!selectedDay ? (
-        <div className="grid grid-cols-2 gap-4">
+        <div>
+          <h1>🏋️‍♂️ Gym Tracker</h1>
           {Object.keys(workouts).map((day) => (
-            <button key={day} className="p-4 bg-blue-500 text-white rounded-md" onClick={() => setSelectedDay(day)}>
+            <button key={day} onClick={() => setSelectedDay(day)}>
               {day}
             </button>
           ))}
         </div>
       ) : (
         <div>
-          <button onClick={() => setSelectedDay(null)} className="mb-4 p-2 bg-gray-500 text-white rounded-md">
-            Back
-          </button>
-          <h2 className="text-xl font-bold mt-4">{selectedDay}</h2>
+          <button onClick={() => setSelectedDay(null)}>⬅ Back</button>
+          <h2>{selectedDay}</h2>
           {workouts[selectedDay].map((exercise, i) => (
-            <div key={exercise.name} className="p-4 bg-gray-200 rounded-md mt-2">
+            <div key={exercise.name} className="card">
               <p className="font-bold">{exercise.name}</p>
-              <p className="text-sm text-gray-500">Sets: {exercise.sets}, Reps: {exercise.reps}</p>
+              <p>Sets: {exercise.sets}, Reps: {exercise.reps}</p>
               {Array.from({ length: exercise.sets }).map((_, j) => (
-                <div key={j} className="flex gap-2 mt-2">
+                <div key={j}>
                   <input
-                    className="p-2 border border-gray-300 rounded-md"
-                    placeholder={`Set ${j + 1} Reps`}
+                    placeholder={`Reps`}
                     value={log[exercise.name]?.[j]?.reps || ""}
                     onChange={(e) => handleLogChange(exercise.name, j, "reps", e.target.value)}
                   />
                   <input
-                    className="p-2 border border-gray-300 rounded-md"
-                    placeholder={`Set ${j + 1} Weight`}
+                    placeholder={`Weight`}
                     value={log[exercise.name]?.[j]?.weight || ""}
                     onChange={(e) => handleLogChange(exercise.name, j, "weight", e.target.value)}
                   />
